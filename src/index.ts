@@ -5,7 +5,7 @@ const bump = new Bump(PIPX)
 const app = new Application({ width: 512, height: 512, antialias: true, transparent: false, resolution: 1 })
 const loader = new Loader()
 loader
-    .add(['/assets/texture/character.json', '/assets/texture/wall.png'])
+    .add(['/assets/texture/player.png', '/assets/texture/wall.png'])
     .load(setup)
 
 class Block {
@@ -42,13 +42,13 @@ class Wall extends Block{
 }
 
 function setup() {
-  const textureStore = loader.resources['/assets/texture/character.json'].textures;
+  const textureStore = loader.resources['/assets/texture/player.png'].texture;
   const wallTexture = loader.resources['/assets/texture/wall.png'].texture;
   const walls = [[68, 100], [68, 132]].map(position => new Wall(wallTexture, position[0], position[1]));
   walls.forEach(wall => {
     app.stage.addChild(wall.sprite);
   })
-  const player = new Player(textureStore['characters-3.png'], 68, 50);
+  const player = new Player(textureStore, 68, 50);
   app.stage.addChild(player.sprite);
   const left = keyboard(37),
     up = keyboard(38),
