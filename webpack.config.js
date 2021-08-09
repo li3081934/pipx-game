@@ -15,7 +15,7 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: ['.ts', '.json']
+    extensions: [".wasm", ".ts", ".tsx", ".mjs", ".cjs", ".js", ".json"],
   },
   module: {
     rules: [{ test: /\.tsx?$/, loader: "ts-loader" }]
